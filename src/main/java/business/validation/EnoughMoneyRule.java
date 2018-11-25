@@ -1,12 +1,12 @@
 package business.validation;
 
-import domain.Purcharse;
+import domain.Purchase;
 
 public class EnoughMoneyRule implements BusinessRule {
 	
-	private Purcharse purcharse;
-	public EnoughMoneyRule(Purcharse purcharse) {
-		this.purcharse = purcharse;
+	private Purchase purcharse;
+	public EnoughMoneyRule(Purchase purchase) {
+		this.purcharse = purchase;
 	}
 
 	@Override

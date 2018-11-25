@@ -1,21 +1,19 @@
 package business.validation;
 
-import domain.Item;
-import domain.Product;
-import domain.Purcharse;
+import domain.Purchase;
 
 public class EnoughInStockRule implements BusinessRule {
 	
-	private Purcharse purcharse;
-	public EnoughInStockRule(Purcharse purcharse) {
+	private Purchase purcharse;
+	public EnoughInStockRule(Purchase purcharse) {
 		this.purcharse = purcharse;
 	}
 
 	@Override
 	public Boolean check() {
 		Boolean hasEnoughStock = purcharse.getItems()
-										.stream().map(Item::getProduct)
-										.anyMatch(Product::hasStock);
+										.stream()
+										.anyMatch(i -> i.getQuantity() <= i.getProduct().getStock());
 		return hasEnoughStock;
 	}
 
